@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><title>Mika Hub Key</title></head>
+<body style="text-align:center;margin-top:100px;">
+  <h1>🔐 Your Mika Hub Key</h1>
+  <h2 id="key">Loading...</h2>
+  <script>
+    const s = "@M1kA!xG93vL4q#tZ8p$RwN7eY0d!A%Bc", d = 86400, t = Math.floor(Date.now()/1000/d);
+    let h = 0, seed = s + t;
+    for(let i = 0; i < seed.length; i++) h = (h * 33 + seed.charCodeAt(i)) % 100000;
+    document.getElementById("key").innerText = "Mika-" + String(h % 10000).padStart(4, "0");
+  </script>
+</body>
+</html>
