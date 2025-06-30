@@ -1,0 +1,5 @@
+      - name: Run key generator
+        env:
+          MIKA_SECRET: ${{ secrets.MIKA_SECRET }}
+        run: python generate_key.py
+        
