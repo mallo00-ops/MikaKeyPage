@@ -2,8 +2,8 @@ name: Daily Key Update
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # every day at 00:00 UTC
-  workflow_dispatch:      # manual run support
+    - cron: '0 0 * * *'  # Every day at 00:00 UTC
+  workflow_dispatch:      # Manual run button
 
 jobs:
   update-key:
@@ -22,11 +22,11 @@ jobs:
           MIKA_SECRET: ${{ secrets.MIKA_SECRET }}
         run: python generate_key.py
 
-      - name: Commit new key
+      - name: Commit and push updated key
         run: |
           git config user.name "MikaKeyBot"
           git config user.email "bot@mikahub.local"
-          git add todaykey.txt
-          git commit -m "🔐 Auto-updated daily key"
+          git add -A
+          git commit -am "🔐 Auto-update key" || echo "Nothing to commit"
           git push
           
